@@ -1,0 +1,31 @@
+   /**
+     * BST algorithm that recursively searches for the parent
+     * node of the node with the data being searched
+     * @param k data being searched for
+     * @param v The node being passed through
+     * @param parent parent of the node being
+     *               passed through
+     * @return The parent node of the data being searched
+     */
+    private BSTNode<T> treeSearchParent(T k, BSTNode<T> v, BSTNode<T> parent) {
+        if (v.getLeft() == null
+                && v.getRight() == null) {
+            return v;
+        }
+        if (k.compareTo(v.getData()) < 0) {
+            if (v.getLeft() == null) {
+                return parent;
+            }
+            return treeSearchParent(k, v.getLeft(), v);
+        } else if (k.compareTo(v.getData()) == 0) {
+            if (root.equals(v)) {
+                return v;
+            }
+            return parent;
+        } else {
+            if (v.getRight() == null) {
+                return parent;
+            }
+            return treeSearchParent(k, v.getRight(), v);
+        }
+    }
